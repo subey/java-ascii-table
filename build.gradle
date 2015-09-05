@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.bethecoder'
+version = '1.0-SNAPSHOT'
+description = "ascii_table"
+
+configurations {
+    deployerJars
+}
+
+repositories {
+    mavenCentral()
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        configuration = configurations.deployerJars
+        repository(url: "ftp://maven.subey.net/public_html/") {
+            authentication(userName: ftpUser, password: ftpPassword)
+        }
+    }
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version:'4.7'
+    deployerJars "org.apache.maven.wagon:wagon-ftp:2.2"
+}

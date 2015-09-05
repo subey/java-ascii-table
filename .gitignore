@@ -1,0 +1,22 @@
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Android Studio / IntelliJ IDEA 
+*.iws
+.idea/gradle.xml
+.idea/libraries
+.idea/tasks.xml
+.idea/uiDesigner.xml
+.idea/vcs.xml
+.idea/workspace.xml
+
+
+# App 
+config.groovy
+.log
