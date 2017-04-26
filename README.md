@@ -240,3 +240,24 @@ ASCIITable.getInstance().printTable(new String[]{"Key", "Value"}, map);
 | bb  | 456   |
 +-----+-------+
 ```
+
+### Example8
+```
+LinkedHashMap<String,String> map = new LinkedHashMap<>();
+map.put("aa", "123");
+map.put("bb", "456");
+String t1 = ASCIITable.getInstance().getTable(new String[]{"Key", "Value"}, map);
+
+map = new LinkedHashMap<>();
+map.put("aa", "123");
+String t2 = ASCIITable.getInstance().getTable(new String[]{"Key", "Value"}, map);
+
+ASCIITable.getInstance().printInlineString(t1,t2, " ");
+
++-----+-------+ +-----+-------+
+| Key | Value | | Key | Value |
++-----+-------+ +-----+-------+
+| aa  | 123   | | aa  | 123   |
+| bb  | 456   | +-----+-------+
++-----+-------+
+```

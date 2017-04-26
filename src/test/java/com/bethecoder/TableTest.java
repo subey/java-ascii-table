@@ -22,4 +22,17 @@ public class TableTest {
         map.put("bb", "456");
         ASCIITable.getInstance().printTable(new String[]{"Key", "Value"}, map);
     }
+    @Test
+    public void inlineTabs(){
+        LinkedHashMap<String,String> map = new LinkedHashMap<>();
+        map.put("aa", "123");
+        map.put("bb", "456");
+        String t1 = ASCIITable.getInstance().getTable(new String[]{"Key", "Value"}, map);
+
+        map = new LinkedHashMap<>();
+        map.put("aa", "123");
+        String t2 = ASCIITable.getInstance().getTable(new String[]{"Key", "Value"}, map);
+
+        ASCIITable.getInstance().printInlineString(t1,t2, " ");
+    }
 }

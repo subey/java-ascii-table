@@ -63,4 +63,8 @@ public interface IASCIITable {
 	public String getTable(IASCIITableAware asciiTableAware);
 	public String getTable(Map data);
 	public String getTable(String[] header, Map data);
+
+
+	public String getInlineString(String a, String b, String glue);
+	public void printInlineString(String a, String b, String glue);
 }

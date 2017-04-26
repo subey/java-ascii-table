@@ -273,6 +273,31 @@ public class SimpleASCIITableImpl implements IASCIITable {
 		return getTable(headerObjs, rows);
 	}
 
+	@Override
+	public String getInlineString(String a, String b, String glue) {
+		String[] aLines = a.split("[\\r\\n]+");
+		String[] bLines = b.split("[\\r\\n]+");
+
+		int maxLines = (aLines.length > bLines.length) ? aLines.length : bLines.length;
+		String[] merged = new String[maxLines];
+
+		for (int i = 0; i < maxLines; i++) {
+			String t1l = (i < aLines.length) ? aLines[i] : "";
+			String t2l = (i < bLines.length) ? bLines[i] : "";
+
+			if(i >= aLines.length){
+				t1l = String.join("", Collections.nCopies(aLines[0].length(), " "));
+			}
+			merged[i] = t1l + glue + t2l;
+
+		}
+		return String.join("\n", merged);
+	}
+
+	@Override
+	public void printInlineString(String a, String b, String glue) {
+		System.out.println(getInlineString(a, b, glue));
+	}
 
 	private String getRowDataBuf(int colCount, List<Integer> colMaxLenList,
 								 String[] row, ASCIITableHeader[] headerObjs, boolean isHeader) {

@@ -100,6 +100,16 @@ public class ASCIITable implements IASCIITable {
 	}
 
 	@Override
+	public String getInlineString(String a, String b, String glue) {
+		return asciiTable.getInlineString(a, b, glue);
+	}
+
+	@Override
+	public void printInlineString(String a, String b, String glue) {
+		asciiTable.printInlineString(a, b, glue);
+	}
+
+	@Override
 	public String getTable(IASCIITableAware asciiTableAware) {
 		return asciiTable.getTable(asciiTableAware);
 	}
