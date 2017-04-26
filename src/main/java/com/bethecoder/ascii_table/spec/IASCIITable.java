@@ -17,6 +17,8 @@ package com.bethecoder.ascii_table.spec;
 
 import com.bethecoder.ascii_table.ASCIITableHeader;
 
+import java.util.Map;
+
 /**
  * Interface specifying ASCII table APIs.
  * 
@@ -44,7 +46,9 @@ public interface IASCIITable {
 	public void printTable(String[] header, int headerAlign, String[][] data, int dataAlign);
 	public void printTable(ASCIITableHeader[] headerObjs, String[][] data);
 	public void printTable(IASCIITableAware asciiTableAware);
-	
+	public void printTable(Map data);
+	public void printTable(String[] header, Map data);
+
 	/**
 	 * Returns the ASCII table as string which can be rendered in console or JSP.
 	 * 
@@ -57,5 +61,6 @@ public interface IASCIITable {
 	public String getTable(String[] header, int headerAlign, String[][] data, int dataAlign);
 	public String getTable(ASCIITableHeader[] headerObjs, String[][] data);
 	public String getTable(IASCIITableAware asciiTableAware);
-	
+	public String getTable(Map data);
+	public String getTable(String[] header, Map data);
 }

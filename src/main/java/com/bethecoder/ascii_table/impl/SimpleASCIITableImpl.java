@@ -15,10 +15,9 @@
  */
 package com.bethecoder.ascii_table.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
+import com.bethecoder.ascii_table.ASCIITable;
 import com.bethecoder.ascii_table.ASCIITableHeader;
 import com.bethecoder.ascii_table.spec.IASCIITable;
 import com.bethecoder.ascii_table.spec.IASCIITableAware;
@@ -216,9 +215,67 @@ public class SimpleASCIITableImpl implements IASCIITable {
 		tableBuf.append(getRowLineBuf(colCount, colMaxLenList, data));
 		return tableBuf.toString();
 	}
-	
-	private String getRowDataBuf(int colCount, List<Integer> colMaxLenList, 
-			String[] row, ASCIITableHeader[] headerObjs, boolean isHeader) {
+
+	@Override
+	public String getTable(Map data) {
+		Iterator<Map.Entry<Object, Object>> it = data.entrySet().iterator();
+		String[][] rows = new String[data.size()-1][2];
+
+		String h1 = null;
+		String h2 = null;
+		int i = 0;
+		while (it.hasNext()) {
+			Map.Entry<Object, Object> e = it.next();
+			if(i == 0){
+				h1 = (String) e.getKey();
+				h2 = (String) e.getValue();
+			}else {
+				rows[i-1][0] = (String) e.getKey();
+				rows[i-1][1] = (String) e.getValue();
+			}
+			i++;
+		}
+		ASCIITableHeader[] headerObjs = {
+				new ASCIITableHeader(h1, ASCIITable.ALIGN_LEFT),
+				new ASCIITableHeader(h2, ASCIITable.ALIGN_LEFT),
+		};
+		return getTable(headerObjs, rows);
+	}
+
+	@Override
+	public void printTable(Map data) {
+		System.out.println(getTable(data));
+	}
+
+	@Override
+	public void printTable(String[] header, Map data) {
+		System.out.println(getTable(header, data));
+	}
+
+	@Override
+	public String getTable(String[] header, Map data) {
+		Iterator<Map.Entry<Object, Object>> it = data.entrySet().iterator();
+		String[][] rows = new String[data.size()][2];
+
+		int i = 0;
+		while (it.hasNext()) {
+			Map.Entry<Object, Object> e = it.next();
+
+			rows[i][0] = (String) e.getKey();
+			rows[i][1] = (String) e.getValue();
+
+			i++;
+		}
+		ASCIITableHeader[] headerObjs = {
+				new ASCIITableHeader(header[0], ASCIITable.ALIGN_LEFT),
+				new ASCIITableHeader(header[1], ASCIITable.ALIGN_LEFT),
+		};
+		return getTable(headerObjs, rows);
+	}
+
+
+	private String getRowDataBuf(int colCount, List<Integer> colMaxLenList,
+								 String[] row, ASCIITableHeader[] headerObjs, boolean isHeader) {
 		
 		StringBuilder rowBuilder = new StringBuilder();
 		String formattedData = null;

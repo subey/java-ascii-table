@@ -19,6 +19,8 @@ import com.bethecoder.ascii_table.impl.SimpleASCIITableImpl;
 import com.bethecoder.ascii_table.spec.IASCIITable;
 import com.bethecoder.ascii_table.spec.IASCIITableAware;
 
+import java.util.Map;
+
 /**
  * The entry point to this framework which acts as a singleton.
  * 
@@ -75,6 +77,26 @@ public class ASCIITable implements IASCIITable {
 	
 	public void printTable(ASCIITableHeader[] headerObjs, String[][] data) {
 		asciiTable.printTable(headerObjs, data);
+	}
+
+	@Override
+	public String getTable(Map data) {
+		return asciiTable.getTable(data);
+	}
+
+	@Override
+	public void printTable(Map data) {
+		asciiTable.printTable(data);
+	}
+
+	@Override
+	public String getTable(String[] header, Map data) {
+		return asciiTable.getTable(header, data);
+	}
+
+	@Override
+	public void printTable(String[] header, Map data) {
+		asciiTable.printTable(header, data);
 	}
 
 	@Override

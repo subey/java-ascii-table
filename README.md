@@ -209,3 +209,34 @@ It prints the following tables in the console.
 |     Sudhakar |      29 |    true | Painting | 123,456,789.12 |
 +--------------+---------+---------+----------+----------------+
 ```
+
+### Example6
+```
+LinkedHashMap<String,String> map = new LinkedHashMap<>();
+map.put("Key", "Value");
+map.put("id", "666");
+map.put("title", "Ascii Table");
+ASCIITable.getInstance().printTable(map);
+
++-------+-------------+
+|  Key  |    Value    |
++-------+-------------+
+| id    | 666         |
+| title | Ascii Table |
++-------+-------------+
+```
+
+### Example7
+```
+LinkedHashMap<String,String> map = new LinkedHashMap<>();
+map.put("aa", "123");
+map.put("bb", "456");
+ASCIITable.getInstance().printTable(new String[]{"Key", "Value"}, map);
+
++-----+-------+
+| Key | Value |
++-----+-------+
+| aa  | 123   |
+| bb  | 456   |
++-----+-------+
+```
