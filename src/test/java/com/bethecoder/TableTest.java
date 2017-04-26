@@ -23,6 +23,13 @@ public class TableTest {
         ASCIITable.getInstance().printTable(new String[]{"Key", "Value"}, map);
     }
     @Test
+    public void mapTest3(){
+        LinkedHashMap<String,String> map = new LinkedHashMap<>();
+        map.put("aa", "123");
+        map.put("bb", "456");
+        ASCIITable.getInstance().printTable("Header", map);
+    }
+    @Test
     public void inlineTabs(){
         LinkedHashMap<String,String> map = new LinkedHashMap<>();
         map.put("aa", "123");

@@ -274,6 +274,27 @@ public class SimpleASCIITableImpl implements IASCIITable {
 	}
 
 	@Override
+	public void printTable(String header, Map data) {
+		System.out.println(getTable(header, data));
+	}
+
+	@Override
+	public String getTable(String header, Map data) {
+		String t = getTable(new String[]{"", ""}, data);
+		String[] lines = t.split("[\\r\\n]+");
+		int len = lines[0].length();
+		int spaces = len - 2 - header.length();
+
+		String gap = String.join("", Collections.nCopies(spaces/2, " "));
+		lines[1] = "|" + gap + header + gap + "|";
+
+		if(lines[1].length() != len){
+			lines[1] = "|" + gap + header + gap + " |";
+		}
+		return String.join("\n", lines);
+	}
+
+	@Override
 	public String getInlineString(String a, String b, String glue) {
 		String[] aLines = a.split("[\\r\\n]+");
 		String[] bLines = b.split("[\\r\\n]+");

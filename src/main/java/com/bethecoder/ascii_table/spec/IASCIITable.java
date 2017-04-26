@@ -48,6 +48,7 @@ public interface IASCIITable {
 	public void printTable(IASCIITableAware asciiTableAware);
 	public void printTable(Map data);
 	public void printTable(String[] header, Map data);
+	public void printTable(String header, Map data);
 
 	/**
 	 * Returns the ASCII table as string which can be rendered in console or JSP.
@@ -63,6 +64,7 @@ public interface IASCIITable {
 	public String getTable(IASCIITableAware asciiTableAware);
 	public String getTable(Map data);
 	public String getTable(String[] header, Map data);
+	public String getTable(String header, Map data);
 
 
 	public String getInlineString(String a, String b, String glue);

@@ -95,6 +95,16 @@ public class ASCIITable implements IASCIITable {
 	}
 
 	@Override
+	public void printTable(String header, Map data) {
+		asciiTable.printTable(header, data);
+	}
+
+	@Override
+	public String getTable(String header, Map data) {
+		return asciiTable.getTable(header, data);
+	}
+
+	@Override
 	public void printTable(String[] header, Map data) {
 		asciiTable.printTable(header, data);
 	}
