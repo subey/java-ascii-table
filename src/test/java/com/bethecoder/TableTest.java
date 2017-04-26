@@ -30,6 +30,32 @@ public class TableTest {
         ASCIITable.getInstance().printTable("Header", map);
     }
     @Test
+    public void mapTest4(){
+    
+        String [] header = { "User Name",  "Salary"};
+
+        String[][] data = {
+                { "Ram", "2000" },
+                { "Sri", "12000" },
+        };
+
+        String t = ASCIITable.getInstance().getTable(header, data);
+        System.out.println(ASCIITable.getInstance().addFullHeader("New header", t));
+    }
+    @Test
+    public void mapTest5(){
+
+        String [] header = { "User Name",  "Salary"};
+
+        String[][] data = {
+                { "Ram", "2000" },
+                { "Sri", "12000" },
+        };
+
+        String t = ASCIITable.getInstance().getTable(header, data);
+        System.out.println(ASCIITable.getInstance().replaceToFullHeader("New header", t));
+    }
+    @Test
     public void inlineTabs(){
         LinkedHashMap<String,String> map = new LinkedHashMap<>();
         map.put("aa", "123");

@@ -269,10 +269,40 @@ map.put("aa", "123");
 map.put("bb", "456");
 ASCIITable.getInstance().printTable("Header", map);
 
-+----+-----+
++----------+
 |  Header  |
 +----+-----+
 | aa | 123 |
 | bb | 456 |
 +----+-----+
+```
+
+### Example10
+```
+String [] header = { "User Name",  "Salary"};
+
+String[][] data = {
+    { "Ram", "2000" },
+    { "Sri", "12000" },
+};
+
+String t = ASCIITable.getInstance().getTable(header, data);
+
+System.out.println(ASCIITable.getInstance().addFullHeader("New header", t));
++--------------------+
+|     New header     |
++--------------------+
+| User Name | Salary |
++-----------+--------+
+|       Ram |   2000 |
+|       Sri |  12000 |
++-----------+--------+
+
+System.out.println(ASCIITable.getInstance().replaceToFullHeader("New header", t));
++--------------------+
+|     New header     |
++-----------+--------+
+|       Ram |   2000 |
+|       Sri |  12000 |
++-----------+--------+
 ```

@@ -69,4 +69,7 @@ public interface IASCIITable {
 
 	public String getInlineString(String a, String b, String glue);
 	public void printInlineString(String a, String b, String glue);
+
+	public String addFullHeader(String header, String table);
+	public String replaceToFullHeader(String header, String table);
 }

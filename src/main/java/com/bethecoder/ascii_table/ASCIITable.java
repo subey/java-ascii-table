@@ -53,6 +53,16 @@ public class ASCIITable implements IASCIITable {
 	}
 
 	@Override
+	public String addFullHeader(String header, String table) {
+		return asciiTable.addFullHeader(header, table);
+	}
+
+	@Override
+	public String replaceToFullHeader(String header, String table) {
+		return asciiTable.replaceToFullHeader(header, table);
+	}
+
+	@Override
 	public String getTable(String[] header, int headerAlign, String[][] data, int dataAlign) {
 		return asciiTable.getTable(header, headerAlign, data, dataAlign);
 	}

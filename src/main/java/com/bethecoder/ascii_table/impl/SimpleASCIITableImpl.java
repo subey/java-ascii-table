@@ -281,7 +281,12 @@ public class SimpleASCIITableImpl implements IASCIITable {
 	@Override
 	public String getTable(String header, Map data) {
 		String t = getTable(new String[]{"", ""}, data);
-		String[] lines = t.split("[\\r\\n]+");
+		return replaceToFullHeader(header, t);
+	}
+
+	@Override
+	public String replaceToFullHeader(String header, String table) {
+		String[] lines = table.split("[\\r\\n]+");
 		int len = lines[0].length();
 		int spaces = len - 2 - header.length();
 
@@ -291,7 +296,25 @@ public class SimpleASCIITableImpl implements IASCIITable {
 		if(lines[1].length() != len){
 			lines[1] = "|" + gap + header + gap + " |";
 		}
+
+		// removes +
+		lines[0] = lines[0].replace("-+-", "---");
 		return String.join("\n", lines);
+	}
+
+	@Override
+	public String addFullHeader(String header, String table) {
+
+		String tableReplace = replaceToFullHeader(header, table);
+		String[] lines = tableReplace.split("[\\r\\n]+");
+
+		String newTable = lines[0] + "\n" + lines[1] + "\n" + table;
+		String[] ntl = newTable.split("[\\r\\n]+");
+		// removes +
+		ntl[0] = ntl[0].replace("-+-", "---");
+		ntl[2] = ntl[2].replace("-+-", "---");
+
+		return String.join("\n", ntl);
 	}
 
 	@Override
