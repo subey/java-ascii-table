@@ -1,5 +1,6 @@
 # JAVA ASCII Table
-Fork of https://code.google.com/p/java-ascii-table/
+Fork of https://code.google.com/p/java-ascii-table/  
+Open source under the [Apache 2.0 license](LICENSE.txt).
 
 ASCII TABLE is a simple framework for generating ASCII tables printable in console and JSPs. It also provides enhanced APIs to get table buffer which can be rendered in Web pages.
 
